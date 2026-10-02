@@ -1,51 +1,13 @@
-# PDF2TEXT
+# Archived implementation: PDF extraction
 
-docker build -t pdf2text -f build/Dockerfile .
-docker run pdf2text
+The maintained implementation is [zixcel-document-output](https://github.com/zixcel/zixcel-document-output). Use its Rust `pdf-analyze` command for text extraction, metadata, page analysis, and JSON reports. Read and report-write permissions are authorized separately.
 
-# OCR
+This repository preserves the original Python implementation, issues, pull requests, and commit history for reference. The maintained package README defines input digest requirements, zero-based page selection, and output permissions. Synthetic comparison fixtures verified extracted text after whitespace normalization and decoded metadata. The Rust implementation also corrects nested-image detection and image-only counters. No customer PDFs are included.
 
-# PDF
+## Legacy structure
 
-## ファイルのメタデータに情報を埋め込む
-## ファイルをテキストとして出力する
+`src/pdf2text/` contains extraction and metadata analysis. `src/workflow/` and `src/cli/` contain the historical command integration. `docs/` and locale files are historical documentation. New callers should use the maintained Rust package interface. No consumers outside this legacy package were found in the inspected workspace source roots.
 
-# 配置個所の決定
+## License
 
-# GPT
-
-
-
-## 完了後のファイルを移動する、上書きする
-
-
-# 監視
-
-## 新しく追加されたファイルがあるかを確認する
-
-
-# DEVCONTAINER
-```
-{
-	"name": "pdf2text",
-	"image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
-	"postCreateCommand": "pip install --upgrade pip && pip install --user -r requirements.txt",
-	"mounts": [
-		{
-			"source": "path the dir to read",
-			"target": "/workspaces/pdf2text/mnt/pdf",
-			"type": "bind"
-		},
-		{
-			"source": "path the dir to out",
-			"target": "/workspaces/pdf2text/mnt/text",
-			"type": "bind"
-		},
-		{
-			"source": "path the dir to models",
-			"target": "/workspaces/pdf2text/mnt/models",
-			"type": "bind"
-		}
-	]
-}
-```
+Apache-2.0 applies to the maintained repository source. See LICENSE and NOTICE; preserve third-party dependency and translation attributions. Local registration inputs and generated reports are excluded from source publication.
